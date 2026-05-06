@@ -23,5 +23,6 @@ public class CartTest extends BaseTest{
         softAssert.assertEquals(driver.findElement(By.xpath("//div[@data-test='inventory-item-price']"))
                 .getText(),costThingOnMain,
                 "The text is not the same");
+        softAssert.assertAll();
     }
 }
