@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ProductsPage extends BasePage{
+public class ProductsPage extends BasePage {
 
     private final By CART = By.cssSelector("[data-test=shopping-cart-link]");
     private final String ADD_TO_CART_PATTERN =
@@ -14,15 +14,15 @@ public class ProductsPage extends BasePage{
         super(driver);
     }
 
-    public void addToCart(String product){
-        driver.findElement(By.xpath(String.format(ADD_TO_CART_PATTERN,product))).click();
+    public void addToCart(String product) {
+        driver.findElement(By.xpath(String.format(ADD_TO_CART_PATTERN, product))).click();
     }
 
-    public void clickCart(){
+    public void clickCart() {
         driver.findElement(CART).click();
     }
 
-    public Boolean itemIsDisplayed(){
+    public Boolean itemIsDisplayed() {
         return driver.findElement(ITEM).isDisplayed();
     }
 }

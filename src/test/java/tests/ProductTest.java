@@ -5,14 +5,14 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ProductTest extends BaseTest{
+public class ProductTest extends BaseTest {
 
     private static final Logger log = LoggerFactory.getLogger(ProductTest.class);
 
     @Test
-    public void checkItemInPage(){
+    public void checkItemInPage() {
         loginPage.open();
         loginPage.loginStandartUser();
-        Assert.assertTrue(productsPage.itemIsDisplayed(),"Товары не найдены");
+        Assert.assertTrue(productsPage.itemIsDisplayed(), "Товары не найдены");
     }
 }

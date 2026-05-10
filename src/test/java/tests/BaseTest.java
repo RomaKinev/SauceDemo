@@ -21,7 +21,7 @@ public class BaseTest {
     BasePage basePage;
 
     @BeforeMethod(alwaysRun = true)
-    public void setup(){
+    public void setup() {
         ChromeOptions options = new ChromeOptions();
         HashMap<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("credentials_enable_service", false);
@@ -44,9 +44,9 @@ public class BaseTest {
         basePage = new BasePage(driver);
     }
 
-    @AfterMethod (alwaysRun = true)
-    public void tearDown(){
-        if (driver!=null){
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
+        if (driver != null) {
             driver.quit();
         }
     }

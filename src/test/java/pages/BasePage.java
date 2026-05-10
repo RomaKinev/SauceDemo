@@ -5,17 +5,15 @@ import org.openqa.selenium.WebDriver;
 
 public class BasePage {
 
-    private final By TITLE = By.cssSelector("[data-test=title]");
-
-    WebDriver driver;
-
     public final String BASE_URL = "https://www.saucedemo.com";
+    private final By TITLE = By.cssSelector("[data-test=title]");
+    WebDriver driver;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return driver.findElement(TITLE).getText();
     }
 }
