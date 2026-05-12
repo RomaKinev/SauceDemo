@@ -1,17 +1,27 @@
+package tests;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.*;
 
 import java.time.Duration;
 import java.util.HashMap;
 
 public class BaseTest {
     WebDriver driver;
+    LoginPage loginPage;
+    ProductsPage productsPage;
+    CartPage cartPage;
+    CheckoutPage checkoutPage;
+    OverviewPage overviewPage;
+    CompletePage completePage;
+    BasePage basePage;
 
     @BeforeMethod(alwaysRun = true)
-    public void setup(){
+    public void setup() {
         ChromeOptions options = new ChromeOptions();
         HashMap<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("credentials_enable_service", false);
@@ -24,11 +34,19 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        loginPage = new LoginPage(driver);
+        productsPage = new ProductsPage(driver);
+        cartPage = new CartPage(driver);
+        checkoutPage = new CheckoutPage(driver);
+        overviewPage = new OverviewPage(driver);
+        completePage = new CompletePage(driver);
+        basePage = new BasePage(driver);
     }
 
-    @AfterMethod (alwaysRun = true)
-    public void tearDown(){
-        if (driver!=null){
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
+        if (driver != null) {
             driver.quit();
         }
     }
