@@ -17,7 +17,7 @@ public class CartTest extends BaseTest {
     @Test
     public void checkRemoveFromCart() {
         loginPage.open();
-        loginPage.loginStandartUser();
+        loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.clickCart();
         cartPage.removeFromCart("Sauce Labs Backpack");

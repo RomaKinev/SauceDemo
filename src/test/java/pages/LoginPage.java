@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 
@@ -24,10 +26,8 @@ public class LoginPage extends BasePage {
         driver.findElement(LOGIN_FIELD).click();
     }
 
-    public void loginStandartUser() {
-        driver.findElement(USERNAME_FIELD).sendKeys("standard_user");
-        driver.findElement(PASSWORD_FIELD).sendKeys("secret_sauce");
-        driver.findElement(LOGIN_FIELD).click();
+    public void isPageOpened() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_FIELD));
     }
 
     public String getErrorMessage() {

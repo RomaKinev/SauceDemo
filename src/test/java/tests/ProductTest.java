@@ -12,7 +12,7 @@ public class ProductTest extends BaseTest {
     @Test
     public void checkItemInPage() {
         loginPage.open();
-        loginPage.loginStandartUser();
+        loginPage.login("standard_user", "secret_sauce");
         Assert.assertTrue(productsPage.itemIsDisplayed(), "Товары не найдены");
     }
 }

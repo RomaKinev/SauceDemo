@@ -8,7 +8,7 @@ public class OverviewTest extends BaseTest {
     @Test
     public void checkOverviewInfo() {
         loginPage.open();
-        loginPage.loginStandartUser();
+        loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.clickCart();
         cartPage.clickCheckout();

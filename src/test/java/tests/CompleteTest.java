@@ -9,7 +9,7 @@ public class CompleteTest extends BaseTest {
     public void checkSuccessOrder() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
-        loginPage.loginStandartUser();
+        loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.clickCart();
         cartPage.clickCheckout();

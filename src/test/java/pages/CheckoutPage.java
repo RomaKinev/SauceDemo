@@ -22,13 +22,6 @@ public class CheckoutPage extends BasePage {
         driver.findElement(CONTINUE).click();
     }
 
-    public void checkoutFormSuccess() {
-        driver.findElement(FIRSTNAME).sendKeys("First Name");
-        driver.findElement(LASTNAME).sendKeys("Last Name");
-        driver.findElement(POSTALCODE).sendKeys("123456");
-        driver.findElement(CONTINUE).click();
-    }
-
     public String getErrorMessage() {
         return driver.findElement(ERROR_MESSAGE).getText();
     }

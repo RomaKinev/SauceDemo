@@ -9,17 +9,17 @@ public class CheckoutTest extends BaseTest {
     @Test
     public void checkCheckoutSuccess() {
         loginPage.open();
-        loginPage.loginStandartUser();
+        loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.clickCart();
         cartPage.clickCheckout();
-        checkoutPage.checkoutFormSuccess();
+        assertEquals(basePage.getTitle(), "Checkout: Your Information","The text is not the same");
     }
 
     @Test
     public void checkCheckoutFormWithEmptyFirstName() {
         loginPage.open();
-        loginPage.loginStandartUser();
+        loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.clickCart();
         cartPage.clickCheckout();
@@ -32,7 +32,7 @@ public class CheckoutTest extends BaseTest {
     @Test
     public void checkCheckoutFormWithEmptyLastName() {
         loginPage.open();
-        loginPage.loginStandartUser();
+        loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.clickCart();
         cartPage.clickCheckout();
@@ -45,7 +45,7 @@ public class CheckoutTest extends BaseTest {
     @Test
     public void checkCheckoutFormWithEmptyPostalCode() {
         loginPage.open();
-        loginPage.loginStandartUser();
+        loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.clickCart();
         cartPage.clickCheckout();
