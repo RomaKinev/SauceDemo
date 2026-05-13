@@ -12,7 +12,7 @@ public class OverviewTest extends BaseTest {
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.clickCart();
         cartPage.clickCheckout();
-        checkoutPage.checkoutFormSuccess();
+        checkoutPage.checkoutForm("First", "last", "123456");
         Assert.assertEquals(overviewPage.checkOverviewItem(), "Sauce Labs Backpack", "The text is not the same");
     }
 }

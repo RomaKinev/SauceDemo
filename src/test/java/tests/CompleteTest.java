@@ -13,7 +13,7 @@ public class CompleteTest extends BaseTest {
         productsPage.addToCart("Sauce Labs Backpack");
         productsPage.clickCart();
         cartPage.clickCheckout();
-        checkoutPage.checkoutFormSuccess();
+        checkoutPage.checkoutForm("First", "last", "123456");
         overviewPage.clickFinishButton();
         softAssert.assertEquals(completePage.checkMessageAfterOrder(),
                 "Thank you for your order!",
