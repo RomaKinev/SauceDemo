@@ -9,7 +9,10 @@ public class ProductTest extends BaseTest {
 
     private static final Logger log = LoggerFactory.getLogger(ProductTest.class);
 
-    @Test
+    @Test(description = "Проверка, что страница товаров не пустая",
+            testName = "Проверка, что страница товаров не пустая",
+            groups = "regression"
+    )
     public void checkItemInPage() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

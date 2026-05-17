@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2"
+       name="SauceDemo suite"
+       parallel="tests">
+<listeners>
+    <listener class-name="tests.TestListener"></listener>
+    <listener class-name="tests.AnnotationTransformer"/>
+</listeners>
+    <test name="smoke">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.LoginTest">
+                <methods>
+                    <include name="checkLoginWithPositiveCred"/>
+                </methods>
+            </class>
+            <class name="tests.CartTest">
+                <methods>
+                    <include name="checkAddItemToCart"/>
+                </methods>
+            </class>
+            <class name="tests.OverviewTest">
+                <methods>
+                    <include name="checkOverviewInfo"/>
+                </methods>
+            </class>
+            <class name="tests.CheckoutTest">
+                <methods>
+                    <include name="checkCheckoutSuccess"/>
+                </methods>
+            </class>
+            <class name="tests.CompleteTest">
+                <methods>
+                    <include name="checkSuccessOrder"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

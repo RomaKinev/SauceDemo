@@ -5,7 +5,10 @@ import org.testng.asserts.SoftAssert;
 
 public class CompleteTest extends BaseTest {
 
-    @Test
+    @Test(description = "Проверка полного оформления заказа",
+            testName = "Проверка полного оформления заказа",
+            groups = {"smoke", "regression"}
+    )
     public void checkSuccessOrder() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
