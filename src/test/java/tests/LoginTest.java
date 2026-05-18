@@ -2,6 +2,7 @@ package tests;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -10,7 +11,11 @@ public class LoginTest extends BaseTest {
 
     private static final Logger log = LoggerFactory.getLogger(LoginTest.class);
 
-    @Test
+    @Test(priority = 1,
+            description = "Проверка логина с позитивными кредами",
+            testName = "Проверка логина с позитивными кредами",
+            groups = "smoke"
+    )
     public void checkLoginWithPositiveCred() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -19,30 +24,26 @@ public class LoginTest extends BaseTest {
                 "error message");
     }
 
-    @Test
-    public void checkLoginWithEmptyUserName() {
+    @DataProvider(name = "Параметризированный тест для негативного логина")
+    public Object[][] loginData() {
+        return new Object[][]{
+                {"", "secret_sauce", "Epic sadface: Username is required"},
+                {"standard_user", "", "Epic sadface: Password is required"},
+                {"test", "test", "Epic sadface: Username and password do not match any user in this service"},
+        };
+    }
+
+    @Test(dataProvider = "Параметризированный тест для негативного логина",
+            description = "Проверка логина с негативными кредами",
+            testName = "Проверка логина с негативными кредами",
+            groups = "regression"
+    )
+    public void checkLoginWithNegativeCred(String user, String password, String errorMessage) {
         loginPage.open();
-        loginPage.login("", "secret_sauce");
+        loginPage.login(user, password);
         assertEquals(loginPage.getErrorMessage(),
-                "Epic sadface: Username is required",
+                errorMessage,
                 "Error message incorrect");
     }
 
-    @Test
-    public void checkLoginWithEmptyPassword() {
-        loginPage.open();
-        loginPage.login("standard_user", "");
-        assertEquals(loginPage.getErrorMessage(),
-                "Epic sadface: Password is required",
-                "Error message incorrect");
-    }
-
-    @Test
-    public void checkLoginWithNegativeCred() {
-        loginPage.open();
-        loginPage.login("qwerty", "qwerty");
-        assertEquals(loginPage.getErrorMessage(),
-                "Epic sadface: Username and password do not match any user in this service",
-                "Error message incorrect");
-    }
 }

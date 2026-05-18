@@ -5,7 +5,10 @@ import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest {
 
-    @Test
+    @Test(description = "Проверка добавления товара в корзину",
+            testName = "Проверка добавления товара в корзину",
+            groups = "smoke"
+    )
     public void checkAddItemToCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -14,7 +17,10 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(cartPage.checkCadtItem(), "Sauce Labs Backpack", "The text is not the same");
     }
 
-    @Test
+    @Test(description = "Проверка удаления товара из корзины",
+            testName = "Проверка удаления товара из корзины",
+            groups = "regression"
+    )
     public void checkRemoveFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

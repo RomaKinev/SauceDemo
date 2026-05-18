@@ -5,7 +5,10 @@ import org.testng.annotations.Test;
 
 public class OverviewTest extends BaseTest {
 
-    @Test
+    @Test(description = "Проверка названия товара на странице Overview",
+            testName = "Проверка названия товара на странице Overview",
+            groups = {"smoke", "regression"}
+    )
     public void checkOverviewInfo() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
