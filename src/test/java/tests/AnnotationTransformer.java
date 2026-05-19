@@ -2,7 +2,7 @@ package tests;
 
 import org.testng.IAnnotationTransformer;
 import org.testng.annotations.ITestAnnotation;
-import tests.Retry;
+import utils.Retry;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;

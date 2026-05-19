@@ -4,7 +4,7 @@
        name="SauceDemo suite"
        parallel="tests">
 <listeners>
-    <listener class-name="tests.TestListener"></listener>
+    <listener class-name="listners.TestListener"></listener>
     <listener class-name="tests.AnnotationTransformer"/>
 </listeners>
     <test name="Thread 1">
