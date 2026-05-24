@@ -1,5 +1,9 @@
 package tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -13,6 +17,10 @@ public class ProductTest extends BaseTest {
             testName = "Проверка, что страница товаров не пустая",
             groups = "regression"
     )
+    @Owner("Kinev")
+    @Epic("Sauce Demo")
+    @Feature("Products")
+    @Story("Проверка что страница не пустая")
     public void checkItemInPage() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

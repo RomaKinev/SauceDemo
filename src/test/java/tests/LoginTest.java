@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
@@ -16,6 +17,16 @@ public class LoginTest extends BaseTest {
             testName = "Проверка логина с позитивными кредами",
             groups = "smoke"
     )
+    @Owner("Kinev")
+    @Epic("Sauce Demo")
+    @Feature("Login")
+    @Story("Login with positive cred")
+    @Description("Проверка логина с позитивными кредами")
+    @Severity(SeverityLevel.CRITICAL)
+    @Flaky
+    @Link(name ="Web", url = "https://www.saucedemo.com")
+    @TmsLink("SD-01")
+    @Issue("BUG-01")
     public void checkLoginWithPositiveCred() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -38,6 +49,10 @@ public class LoginTest extends BaseTest {
             testName = "Проверка логина с негативными кредами",
             groups = "regression"
     )
+    @Owner("Kinev")
+    @Epic("Sauce Demo")
+    @Feature("Login")
+    @Story("Login with negative cred")
     public void checkLoginWithNegativeCred(String user, String password, String errorMessage) {
         loginPage.open();
         loginPage.login(user, password);

@@ -1,5 +1,9 @@
 package tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,6 +15,10 @@ public class CheckoutTest extends BaseTest {
             testName = "Проверка checkout с позитивными данными",
             groups = "smoke"
     )
+    @Owner("Kinev")
+    @Epic("Sauce Demo")
+    @Feature("Checkout")
+    @Story("Успешный чекаут")
     public void checkCheckoutSuccess() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -34,6 +42,10 @@ public class CheckoutTest extends BaseTest {
             testName = "Проверка checkout с негативными данными",
             groups = "regression"
     )
+    @Owner("Kinev")
+    @Epic("Sauce Demo")
+    @Feature("Checkout")
+    @Story("Чекаут с негативными данными")
     public void checkCheckoutFormWithNegativeData(String firstName, String lastName, String postalCode, String error) {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

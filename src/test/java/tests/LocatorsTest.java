@@ -1,11 +1,19 @@
 package tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class LocatorsTest extends BaseTest {
 
     @Test
+    @Owner("Kinev")
+    @Epic("Sauce Demo")
+    @Feature("Test locators")
+    @Story("Использование разных локаторов")
     public void checkDifferentsLocators() {
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
