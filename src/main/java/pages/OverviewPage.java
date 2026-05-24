@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,10 +13,12 @@ public class OverviewPage extends BasePage {
         super(driver);
     }
 
+    @Step("проверяем информацию о товаре на странице Overview")
     public String checkOverviewItem() {
         return driver.findElement(By.xpath(NAME_ITEM_CART)).getText();
     }
 
+    @Step("Нажатие кнопки  Finish")
     public void clickFinishButton() {
         driver.findElement(FINISH).click();
     }

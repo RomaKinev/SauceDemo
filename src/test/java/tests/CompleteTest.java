@@ -1,5 +1,9 @@
 package tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -9,6 +13,10 @@ public class CompleteTest extends BaseTest {
             testName = "Проверка полного оформления заказа",
             groups = {"smoke", "regression"}
     )
+    @Owner("Kinev")
+    @Epic("Sauce Demo")
+    @Feature("Complete")
+    @Story("Успешный заказ")
     public void checkSuccessOrder() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.open();
@@ -23,7 +31,7 @@ public class CompleteTest extends BaseTest {
                 "The text is not the same");
         completePage.clickBackHomeButton();
         softAssert.assertEquals(basePage.getTitle(),
-                "Products",
+                "Product",
                 "The text is not the same");
         softAssert.assertAll();
     }
