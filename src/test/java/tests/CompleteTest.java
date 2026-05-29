@@ -19,13 +19,13 @@ public class CompleteTest extends BaseTest {
     @Story("Успешный заказ")
     public void checkSuccessOrder() {
         SoftAssert softAssert = new SoftAssert();
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.addToCart("Sauce Labs Backpack");
-        productsPage.clickCart();
-        cartPage.clickCheckout();
-        checkoutPage.checkoutForm("First", "last", "123456");
-        overviewPage.clickFinishButton();
+        loginPage.open()
+                .login("standard_user", "secret_sauce")
+                .addToCart("Sauce Labs Backpack")
+                .clickCart()
+                .clickCheckout()
+                .checkoutForm("First", "last", "123456")
+                .clickFinishButton();
         softAssert.assertEquals(completePage.checkMessageAfterOrder(),
                 "Thank you for your order!",
                 "The text is not the same");

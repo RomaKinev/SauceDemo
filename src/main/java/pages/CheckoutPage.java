@@ -3,6 +3,7 @@ package pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CheckoutPage extends BasePage {
 
@@ -16,12 +17,19 @@ public class CheckoutPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public CheckoutPage isPageOpened() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(CONTINUE));
+        return this;
+    }
+
     @Step("Заполнение формы checkout данными '{firstName}', '{lastName}', '{postalCode}'")
-    public void checkoutForm(String firstName, String lastName, String postalCode) {
+    public OverviewPage checkoutForm(String firstName, String lastName, String postalCode) {
         driver.findElement(FIRSTNAME).sendKeys(firstName);
         driver.findElement(LASTNAME).sendKeys(lastName);
         driver.findElement(POSTALCODE).sendKeys(postalCode);
         driver.findElement(CONTINUE).click();
+        return new OverviewPage(driver);
     }
 
     public String getErrorMessage() {

@@ -22,8 +22,9 @@ public class ProductTest extends BaseTest {
     @Feature("Products")
     @Story("Проверка что страница не пустая")
     public void checkItemInPage() {
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.open()
+                .isPageOpened()
+                .login("standard_user", "secret_sauce");
         Assert.assertTrue(productsPage.itemIsDisplayed(), "Товары не найдены");
     }
 }

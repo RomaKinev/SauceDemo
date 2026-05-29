@@ -20,11 +20,12 @@ public class CheckoutTest extends BaseTest {
     @Feature("Checkout")
     @Story("Успешный чекаут")
     public void checkCheckoutSuccess() {
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.addToCart("Sauce Labs Backpack");
-        productsPage.clickCart();
-        cartPage.clickCheckout();
+        loginPage.open()
+                .isPageOpened()
+                .login("standard_user", "secret_sauce")
+                .addToCart("Sauce Labs Backpack")
+                .clickCart()
+                .clickCheckout();
         assertEquals(basePage.getTitle(), "Checkout: Your Information", "The text is not the same");
     }
 
@@ -47,12 +48,13 @@ public class CheckoutTest extends BaseTest {
     @Feature("Checkout")
     @Story("Чекаут с негативными данными")
     public void checkCheckoutFormWithNegativeData(String firstName, String lastName, String postalCode, String error) {
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.addToCart("Sauce Labs Backpack");
-        productsPage.clickCart();
-        cartPage.clickCheckout();
-        checkoutPage.checkoutForm(firstName, lastName, postalCode);
+        loginPage.open()
+                .isPageOpened()
+                .login("standard_user", "secret_sauce")
+                .addToCart("Sauce Labs Backpack")
+                .clickCart()
+                .clickCheckout()
+                .checkoutForm(firstName, lastName, postalCode);
         assertEquals(checkoutPage.getErrorMessage(),
                 error,
                 "Error message incorrect");

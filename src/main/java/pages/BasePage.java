@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BasePage {
+public abstract class BasePage {
 
     public final String BASE_URL = "https://www.saucedemo.com";
     private final By TITLE = By.cssSelector("[data-test=title]");
@@ -39,4 +39,7 @@ public class BasePage {
             }
         };
     }
+
+    public abstract BasePage isPageOpened();
+
 }

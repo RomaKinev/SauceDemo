@@ -18,14 +18,16 @@ public class CartTest extends BaseTest {
     @Description("Проверка корзины")
     @Severity(SeverityLevel.CRITICAL)
     @Flaky
-    @Link(name ="Web", url = "https://www.saucedemo.com")
+    @Link(name = "Web", url = "https://www.saucedemo.com")
     @TmsLink("SD-01")
     @Issue("BUG-01")
     public void checkAddItemToCart() {
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.addToCart("Sauce Labs Backpack");
-        productsPage.clickCart();
+        loginPage.open()
+                .isPageOpened()
+                .login("standard_user", "secret_sauce")
+                .isPageOpened()
+                .addToCart("Sauce Labs Backpack")
+                .clickCart();
         Assert.assertEquals(cartPage.checkCadtItem(), "Sauce Labs Backpack", "The text is not the same");
     }
 
@@ -38,10 +40,12 @@ public class CartTest extends BaseTest {
     @Feature("Cart")
     @Story("удаление из корзины")
     public void checkRemoveFromCart() {
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.addToCart("Sauce Labs Backpack");
-        productsPage.clickCart();
+        loginPage.open()
+                .isPageOpened()
+                .login("standard_user", "secret_sauce")
+                .isPageOpened()
+                .addToCart("Sauce Labs Backpack")
+                .clickCart();
         cartPage.removeFromCart("Sauce Labs Backpack");
         Assert.assertTrue(cartPage.isProductNotDisplayed("Sauce Labs Backpack"), "The product is still in the cart!");
     }

@@ -24,12 +24,13 @@ public class LoginTest extends BaseTest {
     @Description("Проверка логина с позитивными кредами")
     @Severity(SeverityLevel.CRITICAL)
     @Flaky
-    @Link(name ="Web", url = "https://www.saucedemo.com")
+    @Link(name = "Web", url = "https://www.saucedemo.com")
     @TmsLink("SD-01")
     @Issue("BUG-01")
     public void checkLoginWithPositiveCred() {
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.open()
+                .isPageOpened()
+                .login("standard_user", "secret_sauce");
         assertEquals(productsPage.getTitle(),
                 "Products",
                 "error message");
@@ -54,8 +55,9 @@ public class LoginTest extends BaseTest {
     @Feature("Login")
     @Story("Login with negative cred")
     public void checkLoginWithNegativeCred(String user, String password, String errorMessage) {
-        loginPage.open();
-        loginPage.login(user, password);
+        loginPage.open()
+                .isPageOpened()
+                .loginWithNegativeCred(user, password);
         assertEquals(loginPage.getErrorMessage(),
                 errorMessage,
                 "Error message incorrect");
