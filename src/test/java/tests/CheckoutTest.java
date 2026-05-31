@@ -20,13 +20,11 @@ public class CheckoutTest extends BaseTest {
     @Feature("Checkout")
     @Story("Успешный чекаут")
     public void checkCheckoutSuccess() {
-        loginPage.open()
-                .isPageOpened()
-                .login("standard_user", "secret_sauce")
-                .addToCart("Sauce Labs Backpack")
-                .clickCart()
-                .clickCheckout();
-        assertEquals(basePage.getTitle(), "Checkout: Your Information", "The text is not the same");
+        loginStep.authPositive("standard_user", "secret_sauce");
+        productsStep.addToCart("Sauce Labs Backpack");
+        cartPage.clickCheckout();
+        checkoutStep.checkoutForm("Test", "Test", "123456");
+        assertEquals(overviewPage.getTitle(), "Checkout: Overview", "The text is not the same");
     }
 
     @DataProvider(name = "Параметризированный тест для негативного заполнения формы Checkout")
@@ -48,13 +46,10 @@ public class CheckoutTest extends BaseTest {
     @Feature("Checkout")
     @Story("Чекаут с негативными данными")
     public void checkCheckoutFormWithNegativeData(String firstName, String lastName, String postalCode, String error) {
-        loginPage.open()
-                .isPageOpened()
-                .login("standard_user", "secret_sauce")
-                .addToCart("Sauce Labs Backpack")
-                .clickCart()
-                .clickCheckout()
-                .checkoutForm(firstName, lastName, postalCode);
+        loginStep.authPositive("standard_user", "secret_sauce");
+        productsStep.addToCart("Sauce Labs Backpack");
+        cartPage.clickCheckout();
+        checkoutStep.checkoutForm(firstName, lastName, postalCode);
         assertEquals(checkoutPage.getErrorMessage(),
                 error,
                 "Error message incorrect");

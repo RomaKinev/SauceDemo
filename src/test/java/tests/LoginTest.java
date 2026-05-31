@@ -28,9 +28,8 @@ public class LoginTest extends BaseTest {
     @TmsLink("SD-01")
     @Issue("BUG-01")
     public void checkLoginWithPositiveCred() {
-        loginPage.open()
-                .isPageOpened()
-                .login("standard_user", "secret_sauce");
+        loginStep.authPositive("standard_user", "secret_sauce");
+        productsPage.isPageOpened();
         assertEquals(productsPage.getTitle(),
                 "Products",
                 "error message");
@@ -55,9 +54,7 @@ public class LoginTest extends BaseTest {
     @Feature("Login")
     @Story("Login with negative cred")
     public void checkLoginWithNegativeCred(String user, String password, String errorMessage) {
-        loginPage.open()
-                .isPageOpened()
-                .loginWithNegativeCred(user, password);
+        loginStep.authNegative(user, password);
         assertEquals(loginPage.getErrorMessage(),
                 errorMessage,
                 "Error message incorrect");

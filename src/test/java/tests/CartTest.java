@@ -22,12 +22,8 @@ public class CartTest extends BaseTest {
     @TmsLink("SD-01")
     @Issue("BUG-01")
     public void checkAddItemToCart() {
-        loginPage.open()
-                .isPageOpened()
-                .login("standard_user", "secret_sauce")
-                .isPageOpened()
-                .addToCart("Sauce Labs Backpack")
-                .clickCart();
+        loginStep.authPositive("standard_user", "secret_sauce");
+        productsStep.addToCart("Sauce Labs Backpack");
         Assert.assertEquals(cartPage.checkCadtItem(), "Sauce Labs Backpack", "The text is not the same");
     }
 
@@ -40,12 +36,8 @@ public class CartTest extends BaseTest {
     @Feature("Cart")
     @Story("удаление из корзины")
     public void checkRemoveFromCart() {
-        loginPage.open()
-                .isPageOpened()
-                .login("standard_user", "secret_sauce")
-                .isPageOpened()
-                .addToCart("Sauce Labs Backpack")
-                .clickCart();
+        loginStep.authPositive("standard_user", "secret_sauce");
+        productsStep.addToCart("Sauce Labs Backpack");
         cartPage.removeFromCart("Sauce Labs Backpack");
         Assert.assertTrue(cartPage.isProductNotDisplayed("Sauce Labs Backpack"), "The product is still in the cart!");
     }

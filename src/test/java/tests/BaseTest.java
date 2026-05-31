@@ -10,6 +10,9 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.*;
+import steps.CheckoutStep;
+import steps.LoginStep;
+import steps.ProductsStep;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -24,6 +27,9 @@ public class BaseTest {
     OverviewPage overviewPage;
     CompletePage completePage;
     BasePage basePage;
+    LoginStep loginStep;
+    ProductsStep productsStep;
+    CheckoutStep checkoutStep;
 
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true, description = "Настройка драйвера")
@@ -55,7 +61,10 @@ public class BaseTest {
         checkoutPage = new CheckoutPage(driver);
         overviewPage = new OverviewPage(driver);
         completePage = new CompletePage(driver);
-        basePage = new BasePage(driver);
+        //basePage = new BasePage(driver);
+        loginStep = new LoginStep(driver);
+        productsStep = new ProductsStep(driver);
+        checkoutStep = new CheckoutStep(driver);
     }
 
     @AfterMethod(alwaysRun = true, description = "закрытие драйвера")

@@ -18,13 +18,10 @@ public class OverviewTest extends BaseTest {
     @Feature("Overview")
     @Story("Check success overview form")
     public void checkOverviewInfo() {
-        loginPage.open()
-                .isPageOpened()
-                .login("standard_user", "secret_sauce")
-                .addToCart("Sauce Labs Backpack")
-                .clickCart()
-                .clickCheckout()
-                .checkoutForm("First", "last", "123456");
+        loginStep.authPositive("standard_user", "secret_sauce");
+        productsStep.addToCart("Sauce Labs Backpack");
+        cartPage.clickCheckout();
+        checkoutStep.checkoutForm("Test", "Test", "123456");
         Assert.assertEquals(overviewPage.checkOverviewItem(), "Sauce Labs Backpack", "The text is not the same");
     }
 }

@@ -22,9 +22,7 @@ public class ProductTest extends BaseTest {
     @Feature("Products")
     @Story("Проверка что страница не пустая")
     public void checkItemInPage() {
-        loginPage.open()
-                .isPageOpened()
-                .login("standard_user", "secret_sauce");
+        loginStep.authPositive("standard_user", "secret_sauce");
         Assert.assertTrue(productsPage.itemIsDisplayed(), "Товары не найдены");
     }
 }
