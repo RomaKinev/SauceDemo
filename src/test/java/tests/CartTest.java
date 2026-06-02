@@ -1,9 +1,11 @@
 package tests;
 
 import io.qameta.allure.*;
+import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Log4j2
 public class CartTest extends BaseTest {
 
     @Test(description = "Проверка добавления товара в корзину",
@@ -22,6 +24,7 @@ public class CartTest extends BaseTest {
     @TmsLink("SD-01")
     @Issue("BUG-01")
     public void checkAddItemToCart() {
+        log.info("Start test: checkAddItemToCart");
         loginStep.authPositive("standard_user", "secret_sauce");
         productsStep.addToCart("Sauce Labs Backpack");
         Assert.assertEquals(cartPage.checkCadtItem(), "Sauce Labs Backpack", "The text is not the same");
@@ -35,7 +38,9 @@ public class CartTest extends BaseTest {
     @Epic("Sauce Demo")
     @Feature("Cart")
     @Story("удаление из корзины")
+    @Description("Проверка удаления товара из корзины")
     public void checkRemoveFromCart() {
+        log.info("Start test: checkRemoveFromCart");
         loginStep.authPositive("standard_user", "secret_sauce");
         productsStep.addToCart("Sauce Labs Backpack");
         cartPage.removeFromCart("Sauce Labs Backpack");

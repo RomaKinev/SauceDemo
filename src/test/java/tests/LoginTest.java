@@ -1,6 +1,7 @@
 package tests;
 
 import io.qameta.allure.*;
+import lombok.extern.log4j.Log4j2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
@@ -8,6 +9,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
+@Log4j2
 public class LoginTest extends BaseTest {
 
     private static final Logger log = LoggerFactory.getLogger(LoginTest.class);
@@ -28,6 +30,7 @@ public class LoginTest extends BaseTest {
     @TmsLink("SD-01")
     @Issue("BUG-01")
     public void checkLoginWithPositiveCred() {
+        log.info("Start test: checkLoginWithPositiveCred");
         loginStep.authPositive("standard_user", "secret_sauce");
         productsPage.isPageOpened();
         assertEquals(productsPage.getTitle(),
@@ -54,6 +57,7 @@ public class LoginTest extends BaseTest {
     @Feature("Login")
     @Story("Login with negative cred")
     public void checkLoginWithNegativeCred(String user, String password, String errorMessage) {
+        log.info("Start test: checkLoginWithNegativeCred");
         loginStep.authNegative(user, password);
         assertEquals(loginPage.getErrorMessage(),
                 errorMessage,

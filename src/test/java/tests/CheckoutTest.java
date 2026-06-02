@@ -4,11 +4,13 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
+@Log4j2
 public class CheckoutTest extends BaseTest {
 
     @Test(description = "Проверка checkout с позитивными данными",
@@ -20,6 +22,7 @@ public class CheckoutTest extends BaseTest {
     @Feature("Checkout")
     @Story("Успешный чекаут")
     public void checkCheckoutSuccess() {
+        log.info("Start test: checkCheckoutSuccess");
         loginStep.authPositive("standard_user", "secret_sauce");
         productsStep.addToCart("Sauce Labs Backpack");
         cartPage.clickCheckout();
@@ -46,6 +49,7 @@ public class CheckoutTest extends BaseTest {
     @Feature("Checkout")
     @Story("Чекаут с негативными данными")
     public void checkCheckoutFormWithNegativeData(String firstName, String lastName, String postalCode, String error) {
+        log.info("Start test: checkCheckoutFormWithNegativeData");
         loginStep.authPositive("standard_user", "secret_sauce");
         productsStep.addToCart("Sauce Labs Backpack");
         cartPage.clickCheckout();

@@ -4,9 +4,11 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+@Log4j2
 public class CompleteTest extends BaseTest {
 
     @Test(description = "Проверка полного оформления заказа",
@@ -18,6 +20,7 @@ public class CompleteTest extends BaseTest {
     @Feature("Complete")
     @Story("Успешный заказ")
     public void checkSuccessOrder() {
+        log.info("Start test: checkSuccessOrder");
         SoftAssert softAssert = new SoftAssert();
         loginStep.authPositive("standard_user", "secret_sauce");
         productsStep.addToCart("Sauce Labs Backpack");
@@ -29,7 +32,7 @@ public class CompleteTest extends BaseTest {
                 "The text is not the same");
         completePage.clickBackHomeButton();
         softAssert.assertEquals(productsPage.getTitle(),
-                "Product",
+                "Products",
                 "The text is not the same");
         softAssert.assertAll();
     }

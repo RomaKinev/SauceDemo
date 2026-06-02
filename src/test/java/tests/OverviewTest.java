@@ -4,9 +4,11 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
+import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Log4j2
 public class OverviewTest extends BaseTest {
 
     @Test(description = "Проверка названия товара на странице Overview",
@@ -18,6 +20,7 @@ public class OverviewTest extends BaseTest {
     @Feature("Overview")
     @Story("Check success overview form")
     public void checkOverviewInfo() {
+        log.info("Starting checkOverviewInfo test");
         loginStep.authPositive("standard_user", "secret_sauce");
         productsStep.addToCart("Sauce Labs Backpack");
         cartPage.clickCheckout();
