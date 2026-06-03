@@ -27,7 +27,7 @@ public class LoginTest extends BaseTest {
     @Issue("BUG-01")
     public void checkLoginWithPositiveCred() {
         log.info("Start test: checkLoginWithPositiveCred");
-        loginStep.authPositive("standard_user", "secret_sauce");
+        loginStep.authPositive(user, password);
         productsPage.isPageOpened();
         assertEquals(productsPage.getTitle(),
                 "Products",

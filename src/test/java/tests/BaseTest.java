@@ -31,6 +31,9 @@ public class BaseTest {
     ProductsStep productsStep;
     CheckoutStep checkoutStep;
 
+    String user = System.getProperty("user");
+    String password = System.getProperty("password");
+
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true, description = "Настройка драйвера")
     public void setUp(@Optional("chrome") String browser, ITestContext iTestContext) {
