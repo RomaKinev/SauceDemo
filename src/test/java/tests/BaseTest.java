@@ -13,6 +13,7 @@ import pages.*;
 import steps.CheckoutStep;
 import steps.LoginStep;
 import steps.ProductsStep;
+import utils.PropertyReader;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -31,8 +32,8 @@ public class BaseTest {
     ProductsStep productsStep;
     CheckoutStep checkoutStep;
 
-    String user = System.getProperty("user");
-    String password = System.getProperty("password");
+    String user = System.getProperty("user", PropertyReader.getProperty("user"));
+    String password = System.getProperty("password", PropertyReader.getProperty("password"));
 
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true, description = "Настройка драйвера")
