@@ -48,7 +48,7 @@ public class BaseTest {
             options.addArguments("--disable-notifications");
             options.addArguments("--disable-popup-blocking");
             options.addArguments("--disable-infobars");
-            if (System.getProperty("headless","true").equals("true")){
+            if (System.getProperty("headless","false").equals("true")){
                 options.addArguments("--headless");
             }
             options.addArguments("--no-sandbox");
