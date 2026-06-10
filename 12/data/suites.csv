@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Проверка логина с позитивными кредами","496","Проверка логина с позитивными кредами","SauceDemo suite","2026-06-10","passed","2026-06-10","tests.LoginTest","smoke","tests.LoginTest","checkLoginWithPositiveCred"
+"Проверка корзины","2143","Проверка добавления товара в корзину","SauceDemo suite","2026-06-10","passed","2026-06-10","tests.CartTest","smoke","tests.CartTest","checkAddItemToCart"
+"","1267","Проверка полного оформления заказа","SauceDemo suite","2026-06-10","passed","2026-06-10","tests.CompleteTest","smoke","tests.CompleteTest","checkSuccessOrder"
+"","966","Проверка названия товара на странице Overview","SauceDemo suite","2026-06-10","passed","2026-06-10","tests.OverviewTest","smoke","tests.OverviewTest","checkOverviewInfo"
+"","891","Проверка checkout с позитивными данными","SauceDemo suite","2026-06-10","passed","2026-06-10","tests.CheckoutTest","smoke","tests.CheckoutTest","checkCheckoutSuccess"
